@@ -1,6 +1,8 @@
-import { get } from "./endpoints/get";
+import { getTurmasAtivas } from "./endpoints/getTurmasAtivas";
 import { app } from "./app";
+import { postCriarTurma } from "./endpoints/postCriarTurma";
+import { putEditarTurma } from "./endpoints/putEditarTurmas";
 
-app.get("/", get)
-
-
+app.get("/turmas", getTurmasAtivas)
+app.post("/turmas", postCriarTurma)
+app.put("/turmas/:id", putEditarTurma)
