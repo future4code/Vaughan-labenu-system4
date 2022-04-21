@@ -8,7 +8,7 @@ CREATE TABLE Estudante (
   nome VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL UNIQUE,
   data_nasc DATE NOT NULL,
-  turma_id VARCHAR(255) NOT NULL,
+  turma_id VARCHAR(255),
   FOREIGN KEY (turma_id) REFERENCES Turma(id)
 );
 CREATE TABLE Docente (
@@ -16,7 +16,7 @@ CREATE TABLE Docente (
   nome VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL UNIQUE,
   data_nasc DATE NOT NULL,
-  turma_id VARCHAR(255) NOT NULL,
+  turma_id VARCHAR(255),
   FOREIGN KEY (turma_id) REFERENCES Turma(id)
 );
 CREATE TABLE Hobby (
