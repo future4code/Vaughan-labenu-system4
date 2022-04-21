@@ -1,12 +1,11 @@
 export class Usuario {
-    // protected turmaId: string | null = null
+    protected turmaId: string | null = null
 
     constructor(
         protected id: string,
         protected nome: string,
         protected email: string,
         protected dataNasc: string,
-        protected turmaId: string
     ) { }
 
     public getId(): string {
@@ -25,11 +24,7 @@ export class Usuario {
         return this.dataNasc
     }
 
-    //     public getTurmaId(): string | null {
-    //         return this.turmaId
-    //     }
-
-    public getTurmaId(): string {
+    public getTurmaId(): string | null {
         return this.turmaId
     }
 }
