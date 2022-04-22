@@ -8,10 +8,9 @@ export class Estudante extends Usuario {
         nome: string,
         email: string,
         dataNasc: string,
-        turmaId: string,
         hobbies: string[]
     ) {
-        super(id, nome, email, dataNasc, turmaId)
+        super(id, nome, email, dataNasc)
         this.hobbies = hobbies
     }
 

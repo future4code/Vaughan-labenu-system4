@@ -6,15 +6,13 @@ import { covertDateToYYYYMMDD } from '../functions/covertDateToYYYYMMDD'
 export const postCriarEstudante = async (req: Request, res: Response): Promise<void> => {
     let errorCode: number = 400
     try {
-        // const { nome, email, dataNasc, hobbies } = req.body
-        const { nome, email, dataNasc, turmaId, hobbies } = req.body
+        const { nome, email, dataNasc, hobbies } = req.body
+
         const idEstudante: string = String(Date.now())
 
         const dataFormatada = covertDateToYYYYMMDD(dataNasc)
 
-        // const estudante: Estudante = new Estudante(idEstudante, nome, email, dataFormatada, hobbies)
-        const estudante: Estudante = new Estudante(idEstudante, nome, email, dataFormatada, turmaId, hobbies)
-        console.log(estudante)
+        const estudante: Estudante = new Estudante(idEstudante, nome, email, dataFormatada, hobbies)
 
         if (!nome || !email || !dataNasc || !hobbies) {
             errorCode = 422
@@ -38,49 +36,49 @@ export const postCriarEstudante = async (req: Request, res: Response): Promise<v
 
             const resultado = await connection("Hobby")
                 .where({ nome: hobbies[i] })
-            console.log(resultado[i].id)
 
             if (resultado.length > 0) {
-                console.log("entrei")
-                console.log(resultado[i].id)
+
                 await connection("Estudante_Hobby")
                     .insert({
                         id: String(Date.now()),
                         estudante_id: estudante.getId(),
-                        hobby_id: resultado[i].id
+                        hobby_id: resultado[0].id
                     })
-            }
-            if (resultado.length === 0) {
+            } else {
 
-                const adicionarHobby = async (): Promise<void> => {
+
+                const criarHobby = async () => {
                     await connection("Hobby")
                         .insert({
                             id: String(Date.now()),
                             nome: hobbies[i]
                         })
                 }
-                const adicionarHobbyEstudante = async () => {
+
+                const atribuirHobbyAoEstudante = async () => {
+                    const hobbyId = await connection("Hobby")
+                        .where({ nome: hobbies[i] })
+
                     await connection("Estudante_Hobby")
                         .insert({
                             id: String(Date.now()),
                             estudante_id: estudante.getId(),
-                            hobby_id: String(Date.now())
+                            hobby_id: hobbyId[0].id
                         })
                 }
 
-                const main = async () => {
+                const main = async (): Promise<void> => {
                     try {
-                        adicionarHobby()
-                        adicionarHobbyEstudante()
+                        await criarHobby()
+                        await atribuirHobbyAoEstudante()
                     }
                     catch (err: any) {
-                        res.status(400).send(err.response?.data || err.message)
+                        res.send(err.response?.data || err.message)
                     }
                 }
-
                 main()
             }
-
         }
         res.status(201).send("Estudante criado")
 
