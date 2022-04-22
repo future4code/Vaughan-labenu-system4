@@ -1,4 +1,4 @@
-## LabenuSystem:
+# LabenuSystem:
 
 ## Sobre:
 Projeto desenvolvido conforme proposta do bootcamp ministrado pela Labenu para a criação de um sistema básico de cadastro de alunos, professores e turmas, utilizando Programação Orientada a Objetos.
@@ -9,7 +9,7 @@ Projeto desenvolvido conforme proposta do bootcamp ministrado pela Labenu para a
 * MySQL
 * Knex
 
-# As funcionalidades básicas são:
+## As funcionalidades básicas são:
 * Criar turma
 * Buscar turmas ativas
 * Mudar turma de módulo
