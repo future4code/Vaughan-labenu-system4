@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { connection } from "../data/connection"
-import { covertDateToDDMMYYYY } from '../functions/covertDateToDDMMYYYY';
+import { coverterDataParaDDMMYYYY } from '../functions/coverterDataParaDDMMYYYY';
 
 export const getEstudantesPeloNome = async (req: Request, res: Response): Promise<void> => {
     let errorCode: number = 400
@@ -18,7 +18,7 @@ export const getEstudantesPeloNome = async (req: Request, res: Response): Promis
         const resultadoComDataFormatada = resultado.map((estudante) => {
             return {
                 ...estudante,
-                data_nasc: covertDateToDDMMYYYY(estudante.data_nasc)
+                data_nasc: coverterDataParaDDMMYYYY(estudante.data_nasc)
             }
         })
 
