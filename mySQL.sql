@@ -41,3 +41,35 @@ CREATE TABLE Docente_Especialidade (
   especialidade_id VARCHAR(255) NOT NULL,
   FOREIGN KEY (especialidade_id) REFERENCES Especialidade(id)
 );
+
+INSERT INTO `Especialidade` (id, nome)
+  VALUES(
+    "1",
+    "JS"
+  );
+
+INSERT INTO `Especialidade` (id, nome)
+  VALUES(
+    "2",
+    "CSS"
+  );
+
+INSERT INTO `Especialidade` (id, nome)
+  VALUES(
+    "3",
+    "React"
+  );
+
+INSERT INTO `Especialidade` (id, nome)
+  VALUES(
+    "4",
+    "Typescript"
+  );
+
+INSERT INTO `Especialidade` (id, nome)
+  VALUES(
+    "5",
+    "POO"
+  );
+
+ 
