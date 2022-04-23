@@ -1,4 +1,4 @@
-export const covertDateToDDMMYYYY = (date: object): string => {
+export const coverterDataParaDDMMYYYY = (date: object): string => {
     const stringDate = JSON.stringify(date)
 
     const dd = stringDate.slice(9, 11)

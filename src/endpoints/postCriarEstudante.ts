@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { connection } from "../data/connection"
 import { Estudante } from '../classes/estudante';
-import { covertDateToYYYYMMDD } from '../functions/covertDateToYYYYMMDD'
+import { coverterDataParaYYYYMMDD } from '../functions/coverterDataParaYYYYMMDD'
 
 export const postCriarEstudante = async (req: Request, res: Response): Promise<void> => {
     let errorCode: number = 400
@@ -10,7 +10,7 @@ export const postCriarEstudante = async (req: Request, res: Response): Promise<v
 
         const idEstudante: string = String(Date.now())
 
-        const dataFormatada = covertDateToYYYYMMDD(dataNasc)
+        const dataFormatada = coverterDataParaYYYYMMDD(dataNasc)
 
         const estudante: Estudante = new Estudante(idEstudante, nome, email, dataFormatada, hobbies)
 
