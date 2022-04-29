@@ -23,3 +23,4 @@ Projeto desenvolvido conforme proposta do bootcamp ministrado pela Labenu para a
 * Criar docente
 * Buscar todas as pessoas docentes
 * Mudar docente de turma
+
